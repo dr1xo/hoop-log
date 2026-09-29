@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoopLog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    
+    <header class="app-header">
+        <div class="marca">
+            <h1>HoopLog</h1>
+        </div>
+        <nav class ="app-nav">
+            <ul>
+                <li><a href="#panel">Panel</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#ajustes">Ajustes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="app-main">
+    <section class="welcome-section">
+      <h2>Bienvenido a HoopLog</h2>
+      <p>Aqui tienes tus estadisticas precisas de tus partidos y entrenamientos!</p>
+    </section>
+
+    <section class="new-record-section">
+  <h2>Nuevo registro</h2>
+
+  <form class="record-form" action="#" method="POST">
+    
+    <!-- DATOS GENERALES -->
+    <div class="form-group">
+      <label for="activity-type">Tipo de actividad</label>
+      <select id="activity-type" name="type" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="gimnasio">Gimnasio</option>
+        <option value="basquet">Básquet</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="activity-date">Fecha</label>
+        <input type="date" id="activity-date" name="date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="activity-duration">Duración (minutos)</label>
+        <input type="number" id="activity-duration" name="duration" min="1" placeholder="Ej. 60" required>
+      </div>
+    </div>
+
+    <!-- BLOQUE ESPECÍFICO: GIMNASIO -->
+    <fieldset class="fieldset-group group-gym">
+      <legend>🏋️ Detalles de Gimnasio</legend>
+      
+      <div class="form-group">
+        <label for="gym-exercise">Ejercicio</label>
+        <input type="text" id="gym-exercise" name="gym_exercise" placeholder="Ej. Sentadilla, Press de banca">
+      </div>
+
+      <div class="form-row-three">
+        <div class="form-group">
+          <label for="gym-sets">Series</label>
+          <input type="number" id="gym-sets" name="gym_sets" min="1" placeholder="4">
+        </div>
+        <div class="form-group">
+          <label for="gym-reps">Repeticiones</label>
+          <input type="number" id="gym-reps" name="gym_reps" min="1" placeholder="10">
+        </div>
+        <div class="form-group">
+          <label for="gym-weight">Peso (kg)</label>
+          <input type="number" id="gym-weight" name="gym_weight" min="0" step="0.5" placeholder="60">
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- BLOQUE ESPECÍFICO: BÁSQUET -->
+    <fieldset class="fieldset-group group-basketball">
+      <legend>🏀 Detalles de Básquet</legend>
+
+      <div class="form-row-three">
+        <div class="form-group">
+          <label for="bball-points">Puntos</label>
+          <input type="number" id="bball-points" name="bball_points" min="0" placeholder="18">
+        </div>
+        <div class="form-group">
+          <label for="bball-rebounds">Rebotes</label>
+          <input type="number" id="bball-rebounds" name="bball_rebounds" min="0" placeholder="6">
+        </div>
+        <div class="form-group">
+          <label for="bball-assists">Asistencias</label>
+          <input type="number" id="bball-assists" name="bball_assists" min="0" placeholder="4">
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- NOTAS ADICIONALES -->
+    <div class="form-group">
+      <label for="activity-notes">Notas</label>
+      <textarea id="activity-notes" name="notes" rows="3" placeholder="Detalles o sensaciones adicionales..."></textarea>
+    </div>
+
+    <button type="submit" class="btn-submit">Guardar registro</button>
+
+  </form>
+</section>
+
+    <!-- SECCIÓN: HISTORIAL DE ACTIVIDADES -->
+<section class="history-section">
+  <h2>Historial de actividades</h2>
+
+  <div class="history-grid">
+
+    <!-- TARJETA 1: GIMNASIO -->
+    <article class="activity-card card-gym">
+      <header class="card-header">
+        <span class="badge badge-gym">🏋️ Gimnasio</span>
+        <time datetime="2026-09-27">27 sep 2026</time>
+      </header>
+
+      <div class="card-body">
+        <h3>Press de banca</h3>
+        <p class="activity-stat">4 series × 10 reps (70 kg)</p>
+        <p class="activity-meta">⏱️ Duración: <strong>50 min</strong></p>
+      </div>
+
+      <footer class="card-footer">
+        <p><strong>Notas:</strong> Buen ritmo, intentar subir a 72.5 kg en la próxima sesión.</p>
+      </footer>
+    </article>
+
+    <!-- TARJETA 2: BÁSQUET -->
+    <article class="activity-card card-basketball">
+      <header class="card-header">
+        <span class="badge badge-basketball">🏀 Básquet</span>
+        <time datetime="2026-09-25">25 sep 2026</time>
+      </header>
+
+      <div class="card-body">
+        <h3>Partido vs. Club Local</h3>
+        <ul class="stats-list">
+          <li><strong>22</strong> Puntos</li>
+          <li><strong>8</strong> Rebotes</li>
+          <li><strong>5</strong> Asistencias</li>
+        </ul>
+        <p class="activity-meta">⏱️ Duración: <strong>80 min</strong></p>
+      </div>
+
+      <footer class="card-footer">
+        <p><strong>Notas:</strong> Gran efectividad en tiros triples durante el último cuarto.</p>
+      </footer>
+    </article>
+
+    <!-- TARJETA 3: GIMNASIO -->
+    <article class="activity-card card-gym">
+      <header class="card-header">
+        <span class="badge badge-gym">🏋️ Gimnasio</span>
+        <time datetime="2026-09-24">24 sep 2026</time>
+      </header>
+
+      <div class="card-body">
+        <h3>Sentadilla libre</h3>
+        <p class="activity-stat">4 series × 12 reps (90 kg)</p>
+        <p class="activity-meta">⏱️ Duración: <strong>45 min</strong></p>
+      </div>
+
+      <footer class="card-footer">
+        <p><strong>Notas:</strong> Enfoque en profundidad. Mantener buena postura en la última serie.</p>
+      </footer>
+    </article>
+
+  </div>
+</section>
+  </main>
+
+  <footer class="app-footer">
+    <p>&copy; 2026 HoopLog Inc. &bull; Versión 1.2.0</p>
+    <p><a href="#soporte">Soporte</a> | <a href="#privacidad">Privacidad</a></p>
+  </footer>
+
+    
+</body>
+</html>

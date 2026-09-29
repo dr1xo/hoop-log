@@ -1,0 +1,325 @@
+/* Reset básico de márgenes */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ocupar toda la altura de la pantalla */
+body {
+  font-family: system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Encabezado */
+.app-header {
+  background-color: #1e293b;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.app-nav a {
+  color: #f8fafc;
+  text-decoration: none;
+}
+
+/* Área principal: crece para ocupar el espacio restante */
+.app-main {
+  flex: 1;
+  padding: 2rem;
+  background-color: #f1f5f9;
+}
+
+/* Pie de página */
+.app-footer {
+  background-color: #0f172a;
+  color: #94a3b8;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Layout en columnas para campos breves */
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-row-three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+/* Estilos comunes de los fieldsets */
+.fieldset-group {
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.fieldset-group legend {
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0 0.5rem;
+  border-radius: 4px;
+}
+
+/* Estilo visual exclusivo para GIMNASIO (Azul) */
+.group-gym {
+  border-color: #bfdbfe;
+  background-color: #eff6ff;
+}
+
+.group-gym legend {
+  color: #1e40af;
+  background-color: #dbeafe;
+}
+
+/* Estilo visual exclusivo para BÁSQUET (Naranja) */
+.group-basketball {
+  border-color: #fed7aa;
+  background-color: #fff7ed;
+}
+
+.group-basketball legend {
+  color: #9a3412;
+  background-color: #ffedd5;
+}
+
+/* Tarjeta contenedora de la sección */
+.new-record-section {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  margin: 0 auto; /* Centrar en pantalla */
+}
+
+.new-record-section h2 {
+  margin-bottom: 1.2rem;
+  color: #1e293b;
+  font-size: 1.25rem;
+}
+
+/* Agrupador de label + input */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Estilos de los inputs, select y textarea */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+/* Resaltado cuando el usuario hace clic en un campo */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Botón de envío */
+.btn-submit {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+  background-color: #1d4ed8;
+}
+
+/* Layout del contenedor */
+.history-section {
+  margin-top: 2rem;
+}
+
+.history-section h2 {
+  font-size: 1.25rem;
+  color: #1e293b;
+  margin-bottom: 1.25rem;
+}
+
+/* Rejilla de tarjetas adaptativa */
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Estilo base del artículo/tarjeta */
+.activity-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border-left: 5px solid #cbd5e1; /* Borde por defecto */
+  padding: 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* --- ESTILO DISTINTIVO: GIMNASIO (Azul) --- */
+.card-gym {
+  border-left-color: #2563eb;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.badge-gym {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+/* --- ESTILO DISTINTIVO: BÁSQUET (Naranja) --- */
+.card-basketball {
+  border-left-color: #ea580c;
+  background: linear-gradient(180deg, #fffbf7 0%, #ffffff 100%);
+}
+
+.badge-basketball {
+  background-color: #ffedd5;
+  color: #9a3412;
+}
+
+/* Elementos internos de las tarjetas */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.card-header time {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+}
+
+.card-body h3 {
+  font-size: 1.1rem;
+  color: #0f172a;
+  margin-bottom: 0.4rem;
+}
+
+.activity-stat {
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.3rem;
+}
+
+.stats-list {
+  display: flex;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.stats-list li {
+  background-color: #f1f5f9;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.activity-meta {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 0.4rem;
+}
+
+.card-footer {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #e2e8f0;
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Previene que el padding rompa el ancho total */
+}
+
+/* Evita imágenes u objetos desbordados */
+img, input, select, textarea {
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  /* El encabezado se centra y apila el título y el menú */
+  .app-header {
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+  }
+
+  /* Los campos en pareja (Fecha y Duración) pasan a ocupación vertical */
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* Tarjetas del historial: 1 columna en 375px y varias columnas en escritorio */
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Tres campos numéricos ajustables (Series / Reps / Peso) */
+.form-row-three {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 0.75rem;
+}
