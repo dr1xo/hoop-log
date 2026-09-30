@@ -213,6 +213,59 @@ body {
   background-color: var(--primary-hover);
 }
 
+/* Tarjeta individual de cada ejercicio dentro de la sesión */
+.exercise-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--gym-border);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.exercise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.exercise-number {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--gym-color);
+}
+
+/* Botón 'Eliminar' rojo e individual */
+.btn-remove-exercise {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.btn-remove-exercise:hover {
+  text-decoration: underline;
+}
+
+/* Botón secundario para agregar más filas */
+.btn-add-more {
+  background-color: var(--gym-badge-bg);
+  color: var(--gym-color);
+  border: 1px dashed var(--gym-border);
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.btn-add-more:hover {
+  background-color: var(--gym-border);
+}
+
 /* ==========================================
    5. SECCIÓN HISTORIAL Y TARJETAS
    ========================================== */
