@@ -182,36 +182,10 @@ body {
 }
 
 
-/* Alinea el título a la izquierda y el botón a la derecha */
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.25rem;
-}
-
 .section-header h2 {
   font-size: 1.25rem;
   color: #0f172a;
   margin-bottom: 0; /* Quitamos el margen inferior para alinearlo perfecto */
-}
-
-/* Estilo visual tipo botón para el enlace de volver */
-.btn-back {
-  color: #2563eb;
-  text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 600;
-  padding: 0.4rem 0.85rem;
-  background-color: #eff6ff;
-  border-radius: 6px;
-  border: 1px solid #bfdbfe;
-  transition: all 0.2s ease;
-}
-
-.btn-back:hover {
-  background-color: #2563eb;
-  color: #ffffff;
 }
 
 /* Rejilla de tarjetas adaptativa */
