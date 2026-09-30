@@ -1,21 +1,71 @@
-/* Reset básico de márgenes */
+/* ==========================================
+   1. DECLARACIÓN DE VARIABLES (PALETA GLOBAL)
+   ========================================== */
+:root {
+  /* Colores Principales y Botones */
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  
+  /* Fondos Estructurales */
+  --bg-app: #f1f5f9;
+  --bg-card: #ffffff;
+  --header-bg: #1e293b;
+  --footer-bg: #0f172a;
+
+  /* Textos */
+  --text-title: #0f172a;
+  --text-heading: #1e293b;
+  --text-main: #334155;
+  --text-label: #475569;
+  --text-muted: #64748b;
+  --text-light: #f8fafc;
+  --footer-text: #94a3b8;
+
+  /* Bordes y Sombras */
+  --border-default: #cbd5e1;
+  --border-light: #e2e8f0;
+
+  /* Tema Gimnasio (Azul) */
+  --gym-color: #1e40af;
+  --gym-bg: #eff6ff;
+  --gym-border: #bfdbfe;
+  --gym-badge-bg: #dbeafe;
+
+  /* Tema Básquet (Naranja) */
+  --bball-color: #9a3412;
+  --bball-bg: #fff7ed;
+  --bball-border: #fed7aa;
+  --bball-badge-bg: #ffedd5;
+  --bball-accent: #ea580c;
+}
+
+/* ==========================================
+   2. RESET Y ESTRUCTURA BASE
+   ========================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Ocupar toda la altura de la pantalla */
+img, input, select, textarea {
+  max-width: 100%;
+}
+
 body {
   font-family: system-ui, sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: var(--bg-app);
+  color: var(--text-main);
 }
 
-/* Encabezado */
+/* ==========================================
+   3. ENCABEZADO Y PIE DE PÁGINA
+   ========================================== */
 .app-header {
-  background-color: #1e293b;
+  background-color: var(--header-bg);
   color: #fff;
   padding: 1rem 2rem;
   display: flex;
@@ -30,26 +80,73 @@ body {
 }
 
 .app-nav a {
-  color: #f8fafc;
+  color: var(--text-light);
   text-decoration: none;
 }
 
-/* Área principal: crece para ocupar el espacio restante */
 .app-main {
   flex: 1;
   padding: 2rem;
-  background-color: #f1f5f9;
+  background-color: var(--bg-app);
 }
 
-/* Pie de página */
 .app-footer {
-  background-color: #0f172a;
-  color: #94a3b8;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
   text-align: center;
   padding: 1rem;
 }
 
-/* Layout en columnas para campos breves */
+/* ==========================================
+   4. FORMULARIO Y CAMPOS
+   ========================================== */
+.new-record-section {
+  background-color: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.new-record-section h2 {
+  margin-bottom: 1.2rem;
+  color: var(--text-heading);
+  font-size: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-label);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border-default);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
 .form-row {
   display: flex;
   gap: 1rem;
@@ -65,7 +162,7 @@ body {
   gap: 0.75rem;
 }
 
-/* Estilos comunes de los fieldsets */
+/* Fieldsets diferenciados */
 .fieldset-group {
   border: 1px solid;
   border-radius: 8px;
@@ -80,84 +177,30 @@ body {
   border-radius: 4px;
 }
 
-/* Estilo visual exclusivo para GIMNASIO (Azul) */
 .group-gym {
-  border-color: #bfdbfe;
-  background-color: #eff6ff;
+  border-color: var(--gym-border);
+  background-color: var(--gym-bg);
 }
 
 .group-gym legend {
-  color: #1e40af;
-  background-color: #dbeafe;
+  color: var(--gym-color);
+  background-color: var(--gym-badge-bg);
 }
 
-/* Estilo visual exclusivo para BÁSQUET (Naranja) */
 .group-basketball {
-  border-color: #fed7aa;
-  background-color: #fff7ed;
+  border-color: var(--bball-border);
+  background-color: var(--bball-bg);
 }
 
 .group-basketball legend {
-  color: #9a3412;
-  background-color: #ffedd5;
+  color: var(--bball-color);
+  background-color: var(--bball-badge-bg);
 }
 
-/* Tarjeta contenedora de la sección */
-.new-record-section {
-  background-color: #ffffff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  max-width: 500px;
-  margin: 0 auto; /* Centrar en pantalla */
-}
-
-.new-record-section h2 {
-  margin-bottom: 1.2rem;
-  color: #1e293b;
-  font-size: 1.25rem;
-}
-
-/* Agrupador de label + input */
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #475569;
-}
-
-/* Estilos de los inputs, select y textarea */
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 0.6rem 0.8rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  font-family: inherit;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-/* Resaltado cuando el usuario hace clic en un campo */
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-}
-
-/* Botón de envío */
 .btn-submit {
   width: 100%;
   padding: 0.75rem;
-  background-color: #2563eb;
+  background-color: var(--primary);
   color: #ffffff;
   font-weight: bold;
   border: none;
@@ -167,39 +210,38 @@ body {
 }
 
 .btn-submit:hover {
-  background-color: #1d4ed8;
+  background-color: var(--primary-hover);
 }
 
-/* Layout del contenedor */
+/* ==========================================
+   5. SECCIÓN HISTORIAL Y TARJETAS
+   ========================================== */
 .history-section {
   margin-top: 2rem;
 }
 
 .history-section h2 {
   font-size: 1.25rem;
-  color: #1e293b;
+  color: var(--text-heading);
   margin-bottom: 1.25rem;
 }
 
-
 .section-header h2 {
   font-size: 1.25rem;
-  color: #0f172a;
-  margin-bottom: 0; /* Quitamos el margen inferior para alinearlo perfecto */
+  color: var(--text-title);
+  margin-bottom: 0;
 }
 
-/* Rejilla de tarjetas adaptativa */
 .history-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.25rem;
 }
 
-/* Estilo base del artículo/tarjeta */
 .activity-card {
-  background-color: #ffffff;
+  background-color: var(--bg-card);
   border-radius: 10px;
-  border-left: 5px solid #cbd5e1; /* Borde por defecto */
+  border-left: 5px solid var(--border-default);
   padding: 1.25rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   display: flex;
@@ -207,29 +249,28 @@ body {
   justify-content: space-between;
 }
 
-/* --- ESTILO DISTINTIVO: GIMNASIO (Azul) --- */
+/* Tarjetas Gimnasio */
 .card-gym {
-  border-left-color: #2563eb;
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  border-left-color: var(--primary);
+  background: linear-gradient(180deg, var(--text-light) 0%, #ffffff 100%);
 }
 
 .badge-gym {
-  background-color: #dbeafe;
-  color: #1e40af;
+  background-color: var(--gym-badge-bg);
+  color: var(--gym-color);
 }
 
-/* --- ESTILO DISTINTIVO: BÁSQUET (Naranja) --- */
+/* Tarjetas Básquet */
 .card-basketball {
-  border-left-color: #ea580c;
+  border-left-color: var(--bball-accent);
   background: linear-gradient(180deg, #fffbf7 0%, #ffffff 100%);
 }
 
 .badge-basketball {
-  background-color: #ffedd5;
-  color: #9a3412;
+  background-color: var(--bball-badge-bg);
+  color: var(--bball-color);
 }
 
-/* Elementos internos de las tarjetas */
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -239,7 +280,7 @@ body {
 
 .card-header time {
   font-size: 0.85rem;
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 .badge {
@@ -251,13 +292,13 @@ body {
 
 .card-body h3 {
   font-size: 1.1rem;
-  color: #0f172a;
+  color: var(--text-title);
   margin-bottom: 0.4rem;
 }
 
 .activity-stat {
   font-weight: 600;
-  color: #334155;
+  color: var(--text-main);
   margin-bottom: 0.3rem;
 }
 
@@ -270,45 +311,43 @@ body {
 }
 
 .stats-list li {
-  background-color: #f1f5f9;
+  background-color: var(--bg-app);
   padding: 0.3rem 0.6rem;
   border-radius: 6px;
   font-size: 0.85rem;
-  color: #475569;
+  color: var(--text-label);
 }
 
 .activity-meta {
   font-size: 0.85rem;
-  color: #64748b;
+  color: var(--text-muted);
   margin-top: 0.4rem;
 }
 
 .card-footer {
   margin-top: 1rem;
   padding-top: 0.75rem;
-  border-top: 1px dashed #e2e8f0;
+  border-top: 1px dashed var(--border-light);
   font-size: 0.85rem;
-  color: #475569;
+  color: var(--text-label);
 }
 
-/* Evita imágenes u objetos desbordados */
-img, input, select, textarea {
-  max-width: 100%;
-}
-
+/* ==========================================
+   6. RESPONSIVE (PANTALLAS PEQUEÑAS)
+   ========================================== */
 @media (max-width: 600px) {
-  /* El encabezado se centra y apila el título y el menú */
   .app-header {
     flex-direction: column;
     gap: 0.8rem;
     text-align: center;
   }
 
-  /* Los campos en pareja (Fecha y Duración) pasan a ocupación vertical */
   .form-row {
     flex-direction: column;
     gap: 0;
   }
 }
+
+
 
 
