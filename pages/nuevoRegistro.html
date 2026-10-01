@@ -20,105 +20,114 @@
             </ul>
         </nav>
     </header>
+  
+  <main>
 
-<section>
+    <section>
 
-    <h2>Nuevo Registro</h2>
-   
+        <h2>Nuevo Registro</h2>
+      
 
 
-    <form class="record-form" action="#" method="POST">
+        <form class="record-form" action="#" method="POST">
+            
+            <!-- DATOS GENERALES -->
+            <div class="form-group">
+            <label for="activity-type">Tipo de actividad</label>
+            <select id="activity-type" name="type" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="gimnasio">Gimnasio</option>
+                <option value="basquet">Básquet</option>
+            </select>
+            </div>
+
+            <div class="form-row">
+            <div class="form-group">
+                <label for="activity-date">Fecha</label>
+                <input type="date" id="activity-date" name="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="activity-duration">Duración (minutos)</label>
+                <input type="number" id="activity-duration" name="duration" min="1" placeholder="Ej. 60" required>
+            </div>
+            </div>
+
+            <!-- BLOQUE ESPECÍFICO: GIMNASIO -->
+            <fieldset class="fieldset-group group-gym">
+            <legend>🏋️ Detalles de Gimnasio</legend>
+            
+            <!-- Contenedor donde se acumularán los ejercicios -->
+      <div id="exercises-container">
         
-        <!-- DATOS GENERALES -->
-        <div class="form-group">
-        <label for="activity-type">Tipo de actividad</label>
-        <select id="activity-type" name="type" required>
-            <option value="" disabled selected>Selecciona una opción</option>
-            <option value="gimnasio">Gimnasio</option>
-            <option value="basquet">Básquet</option>
-        </select>
-        </div>
+        <!-- Ejercicio 1 (Bloque inicial) -->
+        <div class="exercise-item">
+          <div class="exercise-header">
+            <span class="exercise-number">Ejercicio 1</span>
+          </div>
 
-        <div class="form-row">
-        <div class="form-group">
-            <label for="activity-date">Fecha</label>
-            <input type="date" id="activity-date" name="date" required>
-        </div>
+          <div class="form-group">
+            <label for="gym-exercise-1">Ejercicio</label>
+            <input type="text" id="gym-exercise-1" name="gym_exercise[]" placeholder="Ej. Sentadilla, Press de banca">
+          </div>
 
-        <div class="form-group">
-            <label for="activity-duration">Duración (minutos)</label>
-            <input type="number" id="activity-duration" name="duration" min="1" placeholder="Ej. 60" required>
-        </div>
-        </div>
-
-        <!-- BLOQUE ESPECÍFICO: GIMNASIO -->
-        <fieldset class="fieldset-group group-gym">
-        <legend>🏋️ Detalles de Gimnasio</legend>
-        
-        <!-- Contenedor donde se acumularán los ejercicios -->
-  <div id="exercises-container">
-    
-    <!-- Ejercicio 1 (Bloque inicial) -->
-    <div class="exercise-item">
-      <div class="exercise-header">
-        <span class="exercise-number">Ejercicio 1</span>
-      </div>
-
-      <div class="form-group">
-        <label for="gym-exercise-1">Ejercicio</label>
-        <input type="text" id="gym-exercise-1" name="gym_exercise[]" placeholder="Ej. Sentadilla, Press de banca">
-      </div>
-
-      <div class="form-row-three">
-        <div class="form-group">
-          <label for="gym-sets-1">Series</label>
-          <input type="number" id="gym-sets-1" name="gym_sets[]" min="1" placeholder="4">
-        </div>
-        <div class="form-group">
-          <label for="gym-reps-1">Repeticiones</label>
-          <input type="number" id="gym-reps-1" name="gym_reps[]" min="1" placeholder="10">
-        </div>
-        <div class="form-group">
-          <label for="gym-weight-1">Peso (kg)</label>
-          <input type="number" id="gym-weight-1" name="gym_weight[]" min="0" step="0.5" placeholder="60">
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Botón para añadir nuevos ejercicios dinámicamente -->
-  <button type="button" id="btn-add-exercise" class="btn-add-more">+ Agregar otro ejercicio</button>
-</fieldset>
-
-        <!-- BLOQUE ESPECÍFICO: BÁSQUET -->
-        <fieldset class="fieldset-group group-basketball">
-        <legend>🏀 Detalles de Básquet</legend>
-
-        <div class="form-row-three">
+          <div class="form-row-three">
             <div class="form-group">
-            <label for="bball-points">Puntos</label>
-            <input type="number" id="bball-points" name="bball_points" min="0" placeholder="18">
+              <label for="gym-sets-1">Series</label>
+              <input type="number" id="gym-sets-1" name="gym_sets[]" min="1" placeholder="4">
             </div>
             <div class="form-group">
-            <label for="bball-rebounds">Rebotes</label>
-            <input type="number" id="bball-rebounds" name="bball_rebounds" min="0" placeholder="6">
+              <label for="gym-reps-1">Repeticiones</label>
+              <input type="number" id="gym-reps-1" name="gym_reps[]" min="1" placeholder="10">
             </div>
             <div class="form-group">
-            <label for="bball-assists">Asistencias</label>
-            <input type="number" id="bball-assists" name="bball_assists" min="0" placeholder="4">
+              <label for="gym-weight-1">Peso (kg)</label>
+              <input type="number" id="gym-weight-1" name="gym_weight[]" min="0" step="0.5" placeholder="60">
             </div>
-        </div>
-        </fieldset>
-
-        <!-- NOTAS ADICIONALES -->
-        <div class="form-group">
-        <label for="activity-notes">Notas</label>
-        <textarea id="activity-notes" name="notes" rows="3" placeholder="Detalles o sensaciones adicionales..."></textarea>
+          </div>
         </div>
 
-        <button type="submit" class="btn-submit">Guardar registro</button>
+      </div>
 
-    </form>
-</section>
+      <!-- Botón para añadir nuevos ejercicios dinámicamente -->
+      <button type="button" id="btn-add-exercise" class="btn-add-more">+ Agregar otro ejercicio</button>
+    </fieldset>
+
+            <!-- BLOQUE ESPECÍFICO: BÁSQUET -->
+            <fieldset class="fieldset-group group-basketball">
+            <legend>🏀 Detalles de Básquet</legend>
+
+            <div class="form-row-three">
+                <div class="form-group">
+                <label for="bball-points">Puntos</label>
+                <input type="number" id="bball-points" name="bball_points" min="0" placeholder="18">
+                </div>
+                <div class="form-group">
+                <label for="bball-rebounds">Rebotes</label>
+                <input type="number" id="bball-rebounds" name="bball_rebounds" min="0" placeholder="6">
+                </div>
+                <div class="form-group">
+                <label for="bball-assists">Asistencias</label>
+                <input type="number" id="bball-assists" name="bball_assists" min="0" placeholder="4">
+                </div>
+            </div>
+            </fieldset>
+
+            <!-- NOTAS ADICIONALES -->
+            <div class="form-group">
+            <label for="activity-notes">Notas</label>
+            <textarea id="activity-notes" name="notes" rows="3" placeholder="Detalles o sensaciones adicionales..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Guardar registro</button>
+
+        </form>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>&copy; HoopLog &bull; Año 2026</p>
+  </footer>
+
 </body>
+</html>
