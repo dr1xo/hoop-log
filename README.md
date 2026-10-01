@@ -58,12 +58,12 @@ hooplog/
 ├──index.html
 └──README.md
 └──styles.css
-├── pages/
+└── pages/
     ├── historial.html
     └── nuevoRegistro.html
 
 
 # Autor
 
-Rodrigo Copreni — @dr1xo
+Rodrigo Copreni — GitHub: @dr1xo
     
