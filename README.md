@@ -20,16 +20,13 @@ El proyecto arranca como una página estática y evoluciona hasta convertirse en
   Ver historial de sesiones y partidos
   Ver gráficos de progreso
   Guardar los datos de forma persistente
-Stack
 
-# Etapa 1 — Página estática
+
+Stack
 
 HTML
 CSS
 JavaScript
-
-# Etapa 2 — App completa
-
 Node.js (backend)
 API REST
 Persistencia de datos: [completar: base de datos elegida]
@@ -39,6 +36,7 @@ Backend: servidor en Node.js.
 API REST: endpoints para sesiones y partidos.
 Persistencia: guardado de datos y consulta del historial.
 Progreso: visualización de la evolución en el tiempo.
+
 Instalación y uso
 bash
 # Clonar el repositorio
