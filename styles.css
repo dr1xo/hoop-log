@@ -2,41 +2,54 @@
    1. DECLARACIÓN DE VARIABLES (PALETA GLOBAL)
    ========================================== */
 :root {
-  /* Colores Principales y Botones */
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  
+  /* Botones */
+  --btn-primary-bg: #2563eb;
+  --btn-primary-bg-hover: #1d4ed8;
+
   /* Fondos Estructurales */
-  --bg-app: #f1f5f9;
-  --bg-card: #ffffff;
+  --page-bg: #f1f5f9;
+  --card-bg: #ffffff;
   --header-bg: #1e293b;
   --footer-bg: #0f172a;
 
   /* Textos */
   --text-title: #0f172a;
   --text-heading: #1e293b;
-  --text-main: #334155;
+  --text-body: #334155;
   --text-label: #475569;
   --text-muted: #64748b;
-  --text-light: #f8fafc;
+  --nav-link-text: #f8fafc;
   --footer-text: #94a3b8;
 
-  /* Bordes y Sombras */
-  --border-default: #cbd5e1;
-  --border-light: #e2e8f0;
+  /* Campos de Formulario */
+  --input-border: #cbd5e1;
+  --input-border-focus: #2563eb;
+  --input-focus-ring: rgba(37, 99, 235, 0.15);
+
+  /* Tarjetas del Historial */
+  --card-accent-default: #cbd5e1;
+  --card-divider: #e2e8f0;
+  --stat-chip-bg: #f1f5f9;
 
   /* Tema Gimnasio (Azul) */
-  --gym-color: #1e40af;
-  --gym-bg: #eff6ff;
+  --gym-text: #1e40af;
+  --gym-fieldset-bg: #eff6ff;
   --gym-border: #bfdbfe;
   --gym-badge-bg: #dbeafe;
+  --gym-btn-bg: #dbeafe;
+  --gym-btn-bg-hover: #bfdbfe;
+  --gym-card-accent: #2563eb;
+  --gym-card-gradient-start: #eff6ff;
+  --gym-card-gradient-end: #ffffff;
 
   /* Tema Básquet (Naranja) */
-  --bball-color: #9a3412;
-  --bball-bg: #fff7ed;
+  --bball-text: #9a3412;
+  --bball-fieldset-bg: #fff7ed;
   --bball-border: #fed7aa;
   --bball-badge-bg: #ffedd5;
-  --bball-accent: #ea580c;
+  --bball-card-accent: #ea580c;
+  --bball-card-gradient-start: #fff7ed;
+  --bball-card-gradient-end: #ffffff;
 }
 
 /* ==========================================
@@ -57,8 +70,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--bg-app);
-  color: var(--text-main);
+  background-color: var(--page-bg);
+  color: var(--text-body);
 }
 
 /* ==========================================
@@ -79,14 +92,14 @@ body {
 }
 
 .app-nav a {
-  color: var(--text-light);
+  color: var(--nav-link-text);
   text-decoration: none;
 }
 
 .app-main {
   flex: 1;
   padding: 2rem;
-  background-color: var(--bg-app);
+  background-color: var(--page-bg);
 }
 
 .app-footer {
@@ -100,7 +113,7 @@ body {
    4. FORMULARIO Y CAMPOS
    ========================================== */
 .new-record-section {
-  background-color: var(--bg-card);
+  background-color: var(--card-bg);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -131,7 +144,7 @@ body {
 .form-group select,
 .form-group textarea {
   padding: 0.6rem 0.8rem;
-  border: 1px solid var(--border-default);
+  border: 1px solid var(--input-border);
   border-radius: 6px;
   font-size: 0.95rem;
   font-family: inherit;
@@ -142,8 +155,8 @@ body {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  border-color: var(--input-border-focus);
+  box-shadow: 0 0 0 3px var(--input-focus-ring);
 }
 
 .form-row {
@@ -178,28 +191,28 @@ body {
 
 .group-gym {
   border-color: var(--gym-border);
-  background-color: var(--gym-bg);
+  background-color: var(--gym-fieldset-bg);
 }
 
 .group-gym legend {
-  color: var(--gym-color);
+  color: var(--gym-text);
   background-color: var(--gym-badge-bg);
 }
 
 .group-basketball {
   border-color: var(--bball-border);
-  background-color: var(--bball-bg);
+  background-color: var(--bball-fieldset-bg);
 }
 
 .group-basketball legend {
-  color: var(--bball-color);
+  color: var(--bball-text);
   background-color: var(--bball-badge-bg);
 }
 
 .btn-submit {
   width: 100%;
   padding: 0.75rem;
-  background-color: var(--primary);
+  background-color: var(--btn-primary-bg);
   font-weight: bold;
   border: none;
   border-radius: 6px;
@@ -208,7 +221,7 @@ body {
 }
 
 .btn-submit:hover {
-  background-color: var(--primary-hover);
+  background-color: var(--btn-primary-bg-hover);
 }
 
 /* Tarjeta individual de cada ejercicio dentro de la sesión */
@@ -230,7 +243,7 @@ body {
 .exercise-number {
   font-weight: 700;
   font-size: 0.85rem;
-  color: var(--gym-color);
+  color: var(--gym-text);
 }
 
 /* Botón 'Eliminar' rojo e individual */
@@ -247,8 +260,8 @@ body {
 
 /* Botón secundario para agregar más filas */
 .btn-add-more {
-  background-color: var(--gym-badge-bg);
-  color: var(--gym-color);
+  background-color: var(--gym-btn-bg);
+  color: var(--gym-text);
   border: 1px dashed var(--gym-border);
   padding: 0.6rem 1rem;
   border-radius: 6px;
@@ -259,7 +272,7 @@ body {
 }
 
 .btn-add-more:hover {
-  background-color: var(--gym-border);
+  background-color: var(--gym-btn-bg-hover);
 }
 
 /* ==========================================
@@ -283,9 +296,9 @@ body {
 }
 
 .activity-card {
-  background-color: var(--bg-card);
+  background-color: var(--card-bg);
   border-radius: 10px;
-  border-left: 5px solid var(--border-default);
+  border-left: 5px solid var(--card-accent-default);
   padding: 1.25rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   display: flex;
@@ -295,24 +308,24 @@ body {
 
 /* Tarjetas Gimnasio */
 .card-gym {
-  border-left-color: var(--primary);
-  background: linear-gradient(180deg, var(--text-light) 0%);
+  border-left-color: var(--gym-card-accent);
+  background: linear-gradient(180deg, var(--gym-card-gradient-start) 0%, var(--gym-card-gradient-end) 100%);
 }
 
 .badge-gym {
   background-color: var(--gym-badge-bg);
-  color: var(--gym-color);
+  color: var(--gym-text);
 }
 
 /* Tarjetas Básquet */
 .card-basketball {
-  border-left-color: var(--bball-accent);
-  background: linear-gradient(180deg);
+  border-left-color: var(--bball-card-accent);
+  background: linear-gradient(180deg, var(--bball-card-gradient-start) 0%, var(--bball-card-gradient-end) 100%);
 }
 
 .badge-basketball {
   background-color: var(--bball-badge-bg);
-  color: var(--bball-color);
+  color: var(--bball-text);
 }
 
 .card-header {
@@ -342,7 +355,7 @@ body {
 
 .activity-stat {
   font-weight: 600;
-  color: var(--text-main);
+  color: var(--text-body);
   margin-bottom: 0.3rem;
 }
 
@@ -355,7 +368,7 @@ body {
 }
 
 .stats-list li {
-  background-color: var(--bg-app);
+  background-color: var(--stat-chip-bg);
   padding: 0.3rem 0.6rem;
   border-radius: 6px;
   font-size: 0.85rem;
@@ -371,7 +384,7 @@ body {
 .card-footer {
   margin-top: 1rem;
   padding-top: 0.75rem;
-  border-top: 1px dashed var(--border-light);
+  border-top: 1px dashed var(--card-divider);
   font-size: 0.85rem;
   color: var(--text-label);
 }
