@@ -1,71 +1,86 @@
 /* ==========================================
-   1. DECLARACIÓN DE VARIABLES (PALETA GLOBAL)
+   1. DECLARACIÓN DE VARIABLES
    ========================================== */
 :root {
-  /* Botones */
-  --btn-primary-bg: #2563eb;
-  --btn-primary-bg-hover: #1d4ed8;
-  --btn-primary-text: #ffffff;
+  /* ---------- 1a. Paleta base ----------
+     Cada color existe una sola vez. No se usan directo en las reglas:
+     solo los referencian las variables semánticas de abajo. */
+  --white: #ffffff;
 
-  /* Fondos Estructurales */
-  --page-bg: #f1f5f9;
-  --card-bg: #ffffff;
-  --header-bg: #1e293b;
-  --footer-bg: #0f172a;
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+
+  --orange-50: #fff7ed;
+  --orange-100: #ffedd5;
+  --orange-200: #fed7aa;
+  --orange-600: #ea580c;
+  --orange-800: #9a3412;
+
+  /* ---------- 1b. Variables semánticas ----------
+     Dicen PARA QUÉ se usa cada color. Las reglas usan solo estas. */
+
+  /* Fondos */
+  --page-bg: var(--slate-100);
+  --card-bg: var(--white);
+  --header-bg: var(--slate-800);
+  --footer-bg: var(--slate-900);
+  --stat-chip-bg: var(--slate-100);
 
   /* Textos */
-  --text-title: #0f172a;
-  --text-heading: #1e293b;
-  --text-body: #334155;
-  --text-label: #475569;
-  --text-muted: #64748b;
-  --header-title-text: #f8fafc;
-  --nav-link-text: #f8fafc;
-  --nav-link-active-text: #ffffff;
-  --nav-link-active-border: #ea580c;
-  --footer-text: #94a3b8;
+  --text-title: var(--slate-900);
+  --text-heading: var(--slate-800);
+  --text-body: var(--slate-700);
+  --text-label: var(--slate-600);
+  --text-muted: var(--slate-500);
+  --header-text: var(--slate-50);
+  --footer-text: var(--slate-400);
 
-  /* Campos de Formulario */
-  --input-border: #cbd5e1;
-  --input-border-focus: #2563eb;
-  --input-focus-ring: rgba(37, 99, 235, 0.15);
+  /* Menú */
+  --nav-link-active-text: var(--white);
+  --nav-link-active-border: var(--orange-600);
 
-  /* Tarjetas del Historial */
-  --card-accent-default: #cbd5e1;
-  --card-divider: #e2e8f0;
-  --stat-chip-bg: #f1f5f9;
+  /* Bordes */
+  --border-default: var(--slate-300);
+  --border-subtle: var(--slate-200);
 
-  /* Tema Gimnasio (Azul) */
-  --gym-text: #1e40af;
-  --gym-fieldset-bg: #eff6ff;
-  --gym-border: #bfdbfe;
-  --gym-badge-bg: #dbeafe;
-  --gym-btn-bg: #dbeafe;
-  --gym-btn-bg-hover: #bfdbfe;
-  --gym-card-accent: #2563eb;
-  --gym-card-gradient-start: #eff6ff;
-  --gym-card-gradient-end: #ffffff;
+  /* Acción principal (botón Guardar, acceso Nuevo registro) */
+  --action-primary-bg: var(--blue-600);
+  --action-primary-bg-hover: var(--blue-700);
+  --action-primary-text: var(--white);
 
-  /* Tema Básquet (Naranja) */
-  --bball-text: #9a3412;
-  --bball-fieldset-bg: #fff7ed;
-  --bball-border: #fed7aa;
-  --bball-badge-bg: #ffedd5;
-  --bball-card-accent: #ea580c;
-  --bball-card-gradient-start: #fff7ed;
-  --bball-card-gradient-end: #ffffff;
+  /* Foco (teclado y campos) */
+  --focus-color: var(--blue-600);
+  --focus-ring: color-mix(in srgb, var(--blue-600) 15%, transparent);
 
-  /* Accesos y Tarjetas del Inicio */
-  --link-focus-outline: #2563eb;
-  --access-card-border: #e2e8f0;
-  --access-card-border-hover: #2563eb;
-  --access-card-primary-bg: #2563eb;
-  --access-card-primary-bg-hover: #1d4ed8;
-  --access-card-primary-text: #ffffff;
-  --gym-feature-bg: #eff6ff;
-  --gym-feature-border: #bfdbfe;
-  --bball-feature-bg: #fff7ed;
-  --bball-feature-border: #fed7aa;
+  /* Tema Gimnasio */
+  --gym-text: var(--blue-800);
+  --gym-surface: var(--blue-50);
+  --gym-tint: var(--blue-100);
+  --gym-tint-hover: var(--blue-200);
+  --gym-border: var(--blue-200);
+  --gym-accent: var(--blue-600);
+
+  /* Tema Básquet */
+  --bball-text: var(--orange-800);
+  --bball-surface: var(--orange-50);
+  --bball-tint: var(--orange-100);
+  --bball-border: var(--orange-200);
+  --bball-accent: var(--orange-600);
 }
 
 /* ==========================================
@@ -102,7 +117,7 @@ body {
 }
 
 .marca h1 {
-  color: var(--header-title-text);
+  color: var(--header-text);
 }
 
 .app-nav ul {
@@ -112,7 +127,7 @@ body {
 }
 
 .app-nav a {
-  color: var(--nav-link-text);
+  color: var(--header-text);
   text-decoration: none;
   padding-bottom: 0.25rem;
   border-bottom: 2px solid transparent;
@@ -173,7 +188,7 @@ body {
 .form-group select,
 .form-group textarea {
   padding: 0.6rem 0.8rem;
-  border: 1px solid var(--input-border);
+  border: 1px solid var(--border-default);
   border-radius: 6px;
   font-size: 0.95rem;
   font-family: inherit;
@@ -184,8 +199,8 @@ body {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: var(--input-border-focus);
-  box-shadow: 0 0 0 3px var(--input-focus-ring);
+  border-color: var(--focus-color);
+  box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
 .form-row {
@@ -221,29 +236,29 @@ body {
 
 .group-gym {
   border-color: var(--gym-border);
-  background-color: var(--gym-fieldset-bg);
+  background-color: var(--gym-surface);
 }
 
 .group-gym legend {
   color: var(--gym-text);
-  background-color: var(--gym-badge-bg);
+  background-color: var(--gym-tint);
 }
 
 .group-basketball {
   border-color: var(--bball-border);
-  background-color: var(--bball-fieldset-bg);
+  background-color: var(--bball-surface);
 }
 
 .group-basketball legend {
   color: var(--bball-text);
-  background-color: var(--bball-badge-bg);
+  background-color: var(--bball-tint);
 }
 
 .btn-submit {
   width: 100%;
   padding: 0.75rem;
-  background-color: var(--btn-primary-bg);
-  color: var(--btn-primary-text);
+  background-color: var(--action-primary-bg);
+  color: var(--action-primary-text);
   font-weight: bold;
   border: none;
   border-radius: 6px;
@@ -252,7 +267,7 @@ body {
 }
 
 .btn-submit:hover {
-  background-color: var(--btn-primary-bg-hover);
+  background-color: var(--action-primary-bg-hover);
 }
 
 /* Tarjeta individual de cada ejercicio dentro de la sesión */
@@ -291,7 +306,7 @@ body {
 
 /* Botón secundario para agregar más filas */
 .btn-add-more {
-  background-color: var(--gym-btn-bg);
+  background-color: var(--gym-tint);
   color: var(--gym-text);
   border: 1px dashed var(--gym-border);
   padding: 0.6rem 1rem;
@@ -303,7 +318,7 @@ body {
 }
 
 .btn-add-more:hover {
-  background-color: var(--gym-btn-bg-hover);
+  background-color: var(--gym-tint-hover);
 }
 
 /* ==========================================
@@ -329,7 +344,7 @@ body {
 .activity-card {
   background-color: var(--card-bg);
   border-radius: 10px;
-  border-left: 5px solid var(--card-accent-default);
+  border-left: 5px solid var(--border-default);
   padding: 1.25rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   display: flex;
@@ -339,23 +354,23 @@ body {
 
 /* Tarjetas Gimnasio */
 .card-gym {
-  border-left-color: var(--gym-card-accent);
-  background: linear-gradient(180deg, var(--gym-card-gradient-start) 0%, var(--gym-card-gradient-end) 100%);
+  border-left-color: var(--gym-accent);
+  background: linear-gradient(180deg, var(--gym-surface) 0%, var(--card-bg) 100%);
 }
 
 .badge-gym {
-  background-color: var(--gym-badge-bg);
+  background-color: var(--gym-tint);
   color: var(--gym-text);
 }
 
 /* Tarjetas Básquet */
 .card-basketball {
-  border-left-color: var(--bball-card-accent);
-  background: linear-gradient(180deg, var(--bball-card-gradient-start) 0%, var(--bball-card-gradient-end) 100%);
+  border-left-color: var(--bball-accent);
+  background: linear-gradient(180deg, var(--bball-surface) 0%, var(--card-bg) 100%);
 }
 
 .badge-basketball {
-  background-color: var(--bball-badge-bg);
+  background-color: var(--bball-tint);
   color: var(--bball-text);
 }
 
@@ -415,7 +430,7 @@ body {
 .card-footer {
   margin-top: 1rem;
   padding-top: 0.75rem;
-  border-top: 1px dashed var(--card-divider);
+  border-top: 1px dashed var(--border-subtle);
   font-size: 0.85rem;
   color: var(--text-label);
 }
@@ -458,7 +473,7 @@ body {
 .access-card {
   display: block;
   background-color: var(--card-bg);
-  border: 2px solid var(--access-card-border);
+  border: 2px solid var(--border-subtle);
   border-radius: 10px;
   padding: 1.5rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
@@ -468,11 +483,11 @@ body {
 }
 
 .access-card:hover {
-  border-color: var(--access-card-border-hover);
+  border-color: var(--action-primary-bg);
 }
 
 .access-card:focus-visible {
-  outline: 3px solid var(--link-focus-outline);
+  outline: 3px solid var(--focus-color);
   outline-offset: 2px;
 }
 
@@ -488,18 +503,18 @@ body {
 
 /* Acceso principal: Nuevo registro */
 .access-card-primary {
-  background-color: var(--access-card-primary-bg);
-  border-color: var(--access-card-primary-bg);
-  color: var(--access-card-primary-text);
+  background-color: var(--action-primary-bg);
+  border-color: var(--action-primary-bg);
+  color: var(--action-primary-text);
 }
 
 .access-card-primary h3 {
-  color: var(--access-card-primary-text);
+  color: var(--action-primary-text);
 }
 
 .access-card-primary:hover {
-  background-color: var(--access-card-primary-bg-hover);
-  border-color: var(--access-card-primary-bg-hover);
+  background-color: var(--action-primary-bg-hover);
+  border-color: var(--action-primary-bg-hover);
 }
 
 .feature-card {
@@ -514,8 +529,8 @@ body {
 }
 
 .feature-gym {
-  background-color: var(--gym-feature-bg);
-  border-color: var(--gym-feature-border);
+  background-color: var(--gym-surface);
+  border-color: var(--gym-border);
 }
 
 .feature-gym h3 {
@@ -523,8 +538,8 @@ body {
 }
 
 .feature-basketball {
-  background-color: var(--bball-feature-bg);
-  border-color: var(--bball-feature-border);
+  background-color: var(--bball-surface);
+  border-color: var(--bball-border);
 }
 
 .feature-basketball h3 {
