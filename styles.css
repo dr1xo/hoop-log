@@ -242,9 +242,8 @@ body {
   cursor: pointer;
 }
 
-.btn-remove-exercise:hover {
-  text-decoration: underline;
-}
+
+
 
 /* Botón secundario para agregar más filas */
 .btn-add-more {
@@ -276,11 +275,6 @@ body {
   margin-bottom: 1.25rem;
 }
 
-.section-header h2 {
-  font-size: 1.25rem;
-  color: var(--text-title);
-  margin-bottom: 0;
-}
 
 .history-grid {
   display: grid;
