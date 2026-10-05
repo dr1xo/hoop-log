@@ -396,12 +396,15 @@ body {
     flex-direction: column;
     gap: 0;
   }
-}
 
-.form-row-three {
+  .form-row-three {
     grid-template-columns: 1fr; /* Aquí cambia a 1 columna en celulares */
     gap: 1rem;
   }
+
+}
+
+
 
 
 
