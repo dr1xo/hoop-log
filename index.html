@@ -13,6 +13,7 @@
         </div>
         <nav class ="app-nav">
             <ul>
+                <li><a href="./index.html" aria-current="page">Inicio</a></li>
                 <li><a href="./pages/historial.html">Historial</a></li>
                 <li><a href="./pages/nuevoRegistro.html">Nuevo Registro</a></li>
             </ul>
@@ -22,7 +23,43 @@
     <main class="app-main">
     <section class="welcome-section">
       <h2>Bienvenido a HoopLog</h2>
-      <p>Aqui tienes tus estadisticas precisas de tus partidos y entrenamientos!</p>
+      <p>Registra tus entrenamientos de gimnasio y tus partidos de básquet, y sigue tu progreso en un solo lugar.</p>
+    </section>
+
+    <!-- ACCESOS RÁPIDOS -->
+    <section class="quick-access-section" aria-labelledby="quick-access-title">
+      <h2 id="quick-access-title">Accesos rápidos</h2>
+
+      <div class="access-grid">
+        <a class="access-card access-card-primary" href="./pages/nuevoRegistro.html">
+          <span class="access-icon" aria-hidden="true">➕</span>
+          <h3>Nuevo registro</h3>
+          <p>Carga una sesión de gimnasio o un partido de básquet.</p>
+        </a>
+
+        <a class="access-card" href="./pages/historial.html">
+          <span class="access-icon" aria-hidden="true">📋</span>
+          <h3>Historial</h3>
+          <p>Revisa tus actividades anteriores y tus estadísticas.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- QUÉ SE PUEDE REGISTRAR -->
+    <section class="features-section" aria-labelledby="features-title">
+      <h2 id="features-title">Qué puedes registrar</h2>
+
+      <div class="access-grid">
+        <article class="feature-card feature-gym">
+          <h3>🏋️ Gimnasio</h3>
+          <p>Ejercicios, series, repeticiones y peso de cada sesión.</p>
+        </article>
+
+        <article class="feature-card feature-basketball">
+          <h3>🏀 Básquet</h3>
+          <p>Puntos, rebotes y asistencias de cada partido.</p>
+        </article>
+      </div>
     </section>
     </main>
 
@@ -30,6 +67,6 @@
     <p>&copy; HoopLog &bull; Año 2026</p>
   </footer>
 
-    
+
 </body>
 </html>

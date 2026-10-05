@@ -21,6 +21,8 @@
   --text-muted: #64748b;
   --header-title-text: #f8fafc;
   --nav-link-text: #f8fafc;
+  --nav-link-active-text: #ffffff;
+  --nav-link-active-border: #ea580c;
   --footer-text: #94a3b8;
 
   /* Campos de Formulario */
@@ -52,6 +54,18 @@
   --bball-card-accent: #ea580c;
   --bball-card-gradient-start: #fff7ed;
   --bball-card-gradient-end: #ffffff;
+
+  /* Accesos y Tarjetas del Inicio */
+  --link-focus-outline: #2563eb;
+  --access-card-border: #e2e8f0;
+  --access-card-border-hover: #2563eb;
+  --access-card-primary-bg: #2563eb;
+  --access-card-primary-bg-hover: #1d4ed8;
+  --access-card-primary-text: #ffffff;
+  --gym-feature-bg: #eff6ff;
+  --gym-feature-border: #bfdbfe;
+  --bball-feature-bg: #fff7ed;
+  --bball-feature-border: #fed7aa;
 }
 
 /* ==========================================
@@ -100,6 +114,15 @@ body {
 .app-nav a {
   color: var(--nav-link-text);
   text-decoration: none;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid transparent;
+}
+
+/* Página actual en el menú */
+.app-nav a[aria-current="page"] {
+  color: var(--nav-link-active-text);
+  font-weight: 600;
+  border-bottom-color: var(--nav-link-active-border);
 }
 
 .app-main {
@@ -398,7 +421,118 @@ body {
 }
 
 /* ==========================================
-   6. RESPONSIVE (PANTALLAS PEQUEÑAS)
+   6. PÁGINA DE INICIO
+   ========================================== */
+.welcome-section,
+.quick-access-section,
+.features-section {
+  max-width: 900px;
+  margin: 0 auto 2rem;
+}
+
+.welcome-section h2 {
+  font-size: 1.6rem;
+  color: var(--text-heading);
+  margin-bottom: 0.5rem;
+}
+
+.welcome-section p {
+  font-size: 1.05rem;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+.quick-access-section h2,
+.features-section h2 {
+  font-size: 1.25rem;
+  color: var(--text-heading);
+  margin-bottom: 1rem;
+}
+
+.access-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.access-card {
+  display: block;
+  background-color: var(--card-bg);
+  border: 2px solid var(--access-card-border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  color: var(--text-body);
+  text-decoration: none;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.access-card:hover {
+  border-color: var(--access-card-border-hover);
+}
+
+.access-card:focus-visible {
+  outline: 3px solid var(--link-focus-outline);
+  outline-offset: 2px;
+}
+
+.access-card h3 {
+  font-size: 1.15rem;
+  color: var(--text-title);
+  margin: 0.5rem 0 0.3rem;
+}
+
+.access-icon {
+  font-size: 1.5rem;
+}
+
+/* Acceso principal: Nuevo registro */
+.access-card-primary {
+  background-color: var(--access-card-primary-bg);
+  border-color: var(--access-card-primary-bg);
+  color: var(--access-card-primary-text);
+}
+
+.access-card-primary h3 {
+  color: var(--access-card-primary-text);
+}
+
+.access-card-primary:hover {
+  background-color: var(--access-card-primary-bg-hover);
+  border-color: var(--access-card-primary-bg-hover);
+}
+
+.feature-card {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.feature-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+
+.feature-gym {
+  background-color: var(--gym-feature-bg);
+  border-color: var(--gym-feature-border);
+}
+
+.feature-gym h3 {
+  color: var(--gym-text);
+}
+
+.feature-basketball {
+  background-color: var(--bball-feature-bg);
+  border-color: var(--bball-feature-border);
+}
+
+.feature-basketball h3 {
+  color: var(--bball-text);
+}
+
+/* ==========================================
+   7. RESPONSIVE (PANTALLAS PEQUEÑAS)
    ========================================== */
 @media (max-width: 600px) {
   .app-header {
