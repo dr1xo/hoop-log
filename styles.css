@@ -176,7 +176,7 @@ body {
 
 .form-row-three {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.75rem;
 }
 
@@ -186,6 +186,7 @@ body {
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1.25rem;
+  min-width: 0; /* Por defecto un fieldset no se achica menos que su contenido */
 }
 
 .fieldset-group legend {
@@ -412,7 +413,7 @@ body {
   }
 
   .form-row-three {
-    grid-template-columns: 1fr; /* Aquí cambia a 1 columna en celulares */
+    grid-template-columns: minmax(0, 1fr); /* Aquí cambia a 1 columna en celulares */
     gap: 1rem;
   }
 
