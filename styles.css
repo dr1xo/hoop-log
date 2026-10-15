@@ -1,594 +1,540 @@
-/* ==========================================
-   1. DECLARACIÓN DE VARIABLES
-   ========================================== */
-:root {
-  /* ---------- 1a. Paleta base ----------
-     Cada color existe una sola vez. No se usan directo en las reglas:
-     solo los referencian las variables semánticas de abajo. */
-  --white: #ffffff;
-
-  --slate-50: #f8fafc;
-  --slate-100: #f1f5f9;
-  --slate-200: #e2e8f0;
-  --slate-300: #cbd5e1;
-  --slate-400: #94a3b8;
-  --slate-500: #64748b;
-  --slate-600: #475569;
-  --slate-700: #334155;
-  --slate-800: #1e293b;
-  --slate-900: #0f172a;
-
-  --blue-50: #eff6ff;
-  --blue-100: #dbeafe;
-  --blue-200: #bfdbfe;
-  --blue-600: #2563eb;
-  --blue-700: #1d4ed8;
-  --blue-800: #1e40af;
-
-  --orange-50: #fff7ed;
-  --orange-100: #ffedd5;
-  --orange-200: #fed7aa;
-  --orange-600: #ea580c;
-  --orange-800: #9a3412;
-
-  --red-600: #dc2626;
-  --red-700: #b91c1c;
-
-  /* ---------- 1b. Variables semánticas ----------
-     Dicen PARA QUÉ se usa cada color. Las reglas usan solo estas. */
-
-  /* Fondos */
-  --page-bg: var(--slate-100);
-  --card-bg: var(--white);
-  --header-bg: var(--slate-800);
-  --footer-bg: var(--slate-900);
-  --stat-chip-bg: var(--slate-100);
-
-  /* Textos */
-  --text-title: var(--slate-900);
-  --text-heading: var(--slate-800);
-  --text-body: var(--slate-700);
-  --text-label: var(--slate-600);
-  --text-muted: var(--slate-500);
-  --header-text: var(--slate-50);
-  --footer-text: var(--slate-400);
-
-  /* Menú */
-  --nav-link-active-text: var(--white);
-  --nav-link-active-border: var(--orange-600);
-
-  /* Bordes */
-  --border-default: var(--slate-300);
-  --border-subtle: var(--slate-200);
-
-  /* Acción principal (botón Guardar, acceso Nuevo registro) */
-  --action-primary-bg: var(--blue-600);
-  --action-primary-bg-hover: var(--blue-700);
-  --action-primary-text: var(--white);
-
-  /* Foco (teclado y campos) */
-  --focus-color: var(--blue-600);
-  --focus-ring: color-mix(in srgb, var(--blue-600) 15%, transparent);
-
-  /* Tema Gimnasio */
-  --gym-text: var(--blue-800);
-  --gym-surface: var(--blue-50);
-  --gym-tint: var(--blue-100);
-  --gym-tint-hover: var(--blue-200);
-  --gym-border: var(--blue-200);
-  --gym-accent: var(--blue-600);
-
-  /* Tema Básquet */
-  --bball-text: var(--orange-800);
-  --bball-surface: var(--orange-50);
-  --bball-tint: var(--orange-100);
-  --bball-border: var(--orange-200);
-  --bball-accent: var(--orange-600);
-
-  /* Acciones de borrado (Quitar ejercicio) */
-  --danger-text: var(--red-600);
-  --danger-text-hover: var(--red-700);
-}
+/* Hallmark · macrostructure: Workbench (app) · tone: deportivo, minimalista · anchor hue: 42 (naranja básquet)
+ * theme: studied-DNA (source: https://gymmanager.com.ar/ + captura) · paper oklch(96.5% 0.009 80) · accent oklch(55% 0.17 42)
+ * display: Archivo condensada 800–900 · body: Inter · nav: N1b con acción primaria · footer: Ft2 línea simple
+ * studied: yes · DNA-source: url + image · pre-emit critique: P4 H4 E4 S4 R5 V4
+ */
+@import url("./tokens.css");
 
 /* ==========================================
-   2. RESET Y ESTRUCTURA BASE
+   1. RESET Y BASE
    ========================================== */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-img, input, select, textarea {
+html,
+body {
+  overflow-x: clip;
+}
+
+img, input, select, textarea, button {
   max-width: 100%;
+  font: inherit;
 }
 
 body {
-  font-family: system-ui, sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--page-bg);
-  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: var(--leading-body);
+  color: var(--color-ink-2);
+  background-color: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  color: var(--color-ink);
+  font-style: normal;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Títulos grandes en Archivo condensada */
+.page-title,
+.home-hero h1,
+.section-title,
+.marca,
+.fieldset-group > legend {
+  font-family: var(--font-display);
+  font-stretch: var(--display-stretch);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: var(--leading-tight);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.page-title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-xl);
+}
+
+.section-title {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-md);
 }
 
 /* ==========================================
-   3. ENCABEZADO Y PIE DE PÁGINA
+   2. ENCABEZADO Y PIE DE PÁGINA
    ========================================== */
 .app-header {
-  background-color: var(--header-bg);
-  padding: 1rem 2rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: var(--space-sm) var(--space-lg);
+  padding: var(--space-md) var(--gutter);
+  border-bottom: 1px solid var(--color-rule);
 }
 
-.marca h1 {
-  color: var(--header-text);
+.marca {
+  font-size: var(--text-lg);
+  font-weight: 900;
+  color: var(--color-ink);
+  text-decoration: none;
 }
 
 .app-nav ul {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs) var(--space-lg);
   list-style: none;
 }
 
-.app-nav a {
-  color: var(--header-text);
+.app-nav a:not(.btn) {
+  white-space: nowrap;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-ink-2);
   text-decoration: none;
-  padding-bottom: 0.25rem;
+  padding-block: var(--space-2xs);
   border-bottom: 2px solid transparent;
 }
 
+.app-nav a:not(.btn):hover {
+  color: var(--color-ink);
+}
+
 /* Página actual en el menú */
-.app-nav a[aria-current="page"] {
-  color: var(--nav-link-active-text);
-  font-weight: 600;
-  border-bottom-color: var(--nav-link-active-border);
+.app-nav a:not(.btn)[aria-current="page"] {
+  color: var(--color-ink);
+  border-bottom-color: var(--color-accent);
+}
+
+.app-nav .btn[aria-current="page"] {
+  background-color: var(--color-accent-hover);
 }
 
 .app-main {
   flex: 1;
-  padding: 2rem;
-  background-color: var(--page-bg);
+  width: 100%;
+  padding: var(--space-2xl) var(--gutter) var(--space-3xl);
 }
 
 .app-footer {
-  background-color: var(--footer-bg);
-  color: var(--footer-text);
-  text-align: center;
-  padding: 1rem;
+  padding: var(--space-lg) var(--gutter);
+  border-top: 1px solid var(--color-rule);
+  font-size: var(--text-sm);
+  color: var(--color-ink-3);
 }
 
 /* ==========================================
-   4. FORMULARIO Y CAMPOS
+   3. BOTONES
    ========================================== */
-.new-record-section {
-  background-color: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  max-width: 500px;
-  margin: 0 auto;
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  white-space: nowrap;
+  padding: var(--space-xs) var(--space-lg);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
 }
 
-.new-record-section h2 {
-  margin-bottom: 1.2rem;
-  color: var(--text-heading);
-  font-size: 1.25rem;
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Acción principal: Nuevo registro, Guardar */
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-rule-strong);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--color-surface);
+  border-color: var(--color-ink-3);
+}
+
+.btn-lg {
+  padding: var(--space-sm) var(--space-xl);
+  font-size: var(--text-md);
+}
+
+/* ==========================================
+   4. PÁGINA DE INICIO
+   ========================================== */
+.home-hero {
+  margin-bottom: var(--space-3xl);
+}
+
+.home-hero h1 {
+  font-size: var(--text-display);
+  margin-bottom: var(--space-md);
+}
+
+.home-hero p {
+  max-width: 40ch;
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* Tarjetas de estadísticas */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
+  gap: var(--space-sm);
+  list-style: none;
+}
+
+.stat-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-md);
+}
+
+.stat-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+}
+
+.stat-label abbr {
+  text-decoration: none;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-stretch: var(--display-stretch);
+  font-weight: 800;
+  font-size: var(--text-2xl);
+  line-height: 1;
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Sin datos todavía */
+.stat-value.is-empty {
+  color: var(--color-rule-strong);
+}
+
+.stat-note {
+  margin-top: var(--space-sm);
+  font-size: var(--text-sm);
+  color: var(--color-ink-3);
+}
+
+/* ==========================================
+   5. FORMULARIO
+   ========================================== */
+.record-form {
+  max-width: 36rem;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 1rem;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-md);
+  min-width: 0;
 }
 
 .form-group label {
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--text-label);
+  color: var(--color-ink);
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-  padding: 0.6rem 0.8rem;
-  border: 1px solid var(--border-default);
-  border-radius: 6px;
-  font-size: 0.95rem;
-  font-family: inherit;
-  outline: none;
-  transition: border-color 0.2s;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--text-md);
+  color: var(--color-ink);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-rule-strong);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--dur-fast) var(--ease-out);
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: var(--focus-color);
-  box-shadow: 0 0 0 3px var(--focus-ring);
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: var(--color-ink-3);
+}
+
+.form-group input:focus-visible,
+.form-group select:focus-visible,
+.form-group textarea:focus-visible {
+  border-color: var(--color-focus);
+  outline-offset: 0;
+}
+
+.form-group ::placeholder {
+  color: var(--color-ink-3);
+}
+
+.form-group textarea {
+  resize: vertical;
 }
 
 .form-row {
-  display: flex;
-  gap: 1rem;
-}
-
-.form-row .form-group {
-  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
 }
 
 .form-row-three {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
+  gap: var(--space-sm);
 }
 
-/* Fieldsets diferenciados */
+/* Bloques de Gimnasio y Básquet: una línea arriba, sin caja */
 .fieldset-group {
-  border: 1px solid;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1.25rem;
   min-width: 0; /* Por defecto un fieldset no se achica menos que su contenido */
+  border: 0;
+  border-top: 1px solid var(--color-rule);
+  padding: var(--space-lg) 0 var(--space-xs);
+  margin-bottom: var(--space-md);
 }
 
-.fieldset-group legend {
-  font-weight: 700;
-  font-size: 0.9rem;
-  padding: 0 0.5rem;
-  border-radius: 4px;
-}
-
-.group-gym {
-  border-color: var(--gym-border);
-  background-color: var(--gym-surface);
-}
-
-.group-gym legend {
-  color: var(--gym-text);
-  background-color: var(--gym-tint);
-}
-
-.group-basketball {
-  border-color: var(--bball-border);
-  background-color: var(--bball-surface);
-}
-
-.group-basketball legend {
-  color: var(--bball-text);
-  background-color: var(--bball-tint);
-}
-
-.btn-submit {
+/* El float saca la leyenda de la línea del borde */
+.fieldset-group > legend {
+  float: left;
   width: 100%;
-  padding: 0.75rem;
-  background-color: var(--action-primary-bg);
-  color: var(--action-primary-text);
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  margin-bottom: var(--space-md);
+  font-size: var(--text-lg);
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--color-ink);
 }
 
-.btn-submit:hover {
-  background-color: var(--action-primary-bg-hover);
+.fieldset-group > legend + * {
+  clear: both;
 }
 
-/* Tarjeta individual de cada ejercicio dentro de la sesión */
+/* Cada ejercicio separado por una línea */
 .exercise-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid var(--gym-border);
-  border-radius: 6px;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  padding-block: var(--space-md);
+  border-top: 1px solid var(--color-rule);
+}
+
+.exercise-item:first-child {
+  padding-top: 0;
+  border-top: 0;
 }
 
 .exercise-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
+  align-items: baseline;
+  margin-bottom: var(--space-sm);
 }
 
 .exercise-number {
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--gym-text);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-ink-3);
 }
 
-/* Botón 'Eliminar' rojo e individual */
 .btn-remove-exercise {
+  padding: var(--space-2xs) var(--space-xs);
   background: none;
-  border: none;
-  color: var(--danger-text);
+  border: 0;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
   font-weight: 600;
-  font-size: 0.8rem;
+  color: var(--color-danger);
   cursor: pointer;
 }
 
 .btn-remove-exercise:hover {
-  color: var(--danger-text-hover);
+  color: var(--color-danger-hover);
   text-decoration: underline;
 }
 
-.btn-remove-exercise:focus-visible {
-  outline: 2px solid var(--focus-color);
-  outline-offset: 2px;
-}
-
-
-
-
-/* Botón secundario para agregar más filas */
 .btn-add-more {
-  background-color: var(--gym-tint);
-  color: var(--gym-text);
-  border: 1px dashed var(--gym-border);
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  width: 100%;
-  transition: background-color 0.2s;
+  margin-bottom: var(--space-md);
 }
 
-.btn-add-more:hover {
-  background-color: var(--gym-tint-hover);
+.btn-submit {
+  width: 100%;
+  margin-top: var(--space-xs);
 }
 
 /* ==========================================
-   5. SECCIÓN HISTORIAL Y TARJETAS
+   6. HISTORIAL
    ========================================== */
-.history-section {
-  margin-top: 2rem;
-}
-
-.history-section h2 {
-  font-size: 1.25rem;
-  color: var(--text-heading);
-  margin-bottom: 1.25rem;
-}
-
-
 .history-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+  gap: var(--space-md);
 }
 
 .activity-card {
-  background-color: var(--card-bg);
-  border-radius: 10px;
-  border-left: 5px solid var(--border-default);
-  padding: 1.25rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Tarjetas Gimnasio */
-.card-gym {
-  border-left-color: var(--gym-accent);
-  background: linear-gradient(180deg, var(--gym-surface) 0%, var(--card-bg) 100%);
-}
-
-.badge-gym {
-  background-color: var(--gym-tint);
-  color: var(--gym-text);
-}
-
-/* Tarjetas Básquet */
-.card-basketball {
-  border-left-color: var(--bball-accent);
-  background: linear-gradient(180deg, var(--bball-surface) 0%, var(--card-bg) 100%);
-}
-
-.badge-basketball {
-  background-color: var(--bball-tint);
-  color: var(--bball-text);
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-md);
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.8rem;
+  gap: var(--space-sm);
 }
 
 .card-header time {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.badge {
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.25rem 0.6rem;
-  border-radius: 20px;
+  white-space: nowrap;
+  font-size: var(--text-sm);
+  color: var(--color-ink-3);
+  font-variant-numeric: tabular-nums;
 }
 
 .card-body h3 {
-  font-size: 1.1rem;
-  color: var(--text-title);
-  margin-bottom: 0.4rem;
-}
-
-.activity-stat {
+  font-size: var(--text-lg);
   font-weight: 600;
-  color: var(--text-body);
-  margin-bottom: 0.3rem;
+  line-height: 1.25;
+  margin-bottom: var(--space-sm);
 }
 
 .stats-list {
-  display: flex;
-  gap: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-xs);
   list-style: none;
-  padding: 0;
-  margin: 0.5rem 0;
 }
 
 .stats-list li {
-  background-color: var(--stat-chip-bg);
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  color: var(--text-label);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  padding: var(--space-xs) var(--space-sm);
+  background-color: var(--color-paper);
+  border-radius: var(--radius-sm);
+}
+
+.stats-list .stat-value {
+  font-size: var(--text-xl);
 }
 
 .activity-meta {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-top: 0.4rem;
+  margin-top: var(--space-sm);
+  font-size: var(--text-sm);
+  color: var(--color-ink-3);
+}
+
+.activity-meta strong {
+  font-weight: 600;
+  color: var(--color-ink-2);
+  font-variant-numeric: tabular-nums;
 }
 
 .card-footer {
-  margin-top: 1rem;
-  padding-top: 0.75rem;
-  border-top: 1px dashed var(--border-subtle);
-  font-size: 0.85rem;
-  color: var(--text-label);
+  margin-top: auto;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-rule);
+  font-size: var(--text-sm);
 }
 
 /* ==========================================
-   6. PÁGINA DE INICIO
+   7. MARCA DE TIPO DE ACTIVIDAD
+   Un cuadradito de color antes del nombre.
    ========================================== */
-.welcome-section,
-.quick-access-section,
-.features-section {
-  max-width: 900px;
-  margin: 0 auto 2rem;
+.type-marker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-ink-2);
 }
 
-.welcome-section h2 {
-  font-size: 1.6rem;
-  color: var(--text-heading);
-  margin-bottom: 0.5rem;
+.type-marker::before {
+  content: "";
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 2px;
+  background-color: var(--type-color);
 }
 
-.welcome-section p {
-  font-size: 1.05rem;
-  color: var(--text-body);
-  line-height: 1.5;
-}
-
-.quick-access-section h2,
-.features-section h2 {
-  font-size: 1.25rem;
-  color: var(--text-heading);
-  margin-bottom: 1rem;
-}
-
-.access-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.25rem;
-}
-
-.access-card {
-  display: block;
-  background-color: var(--card-bg);
-  border: 2px solid var(--border-subtle);
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  color: var(--text-body);
-  text-decoration: none;
-  transition: border-color 0.2s, background-color 0.2s;
-}
-
-.access-card:hover {
-  border-color: var(--action-primary-bg);
-}
-
-.access-card:focus-visible {
-  outline: 3px solid var(--focus-color);
-  outline-offset: 2px;
-}
-
-.access-card h3 {
-  font-size: 1.15rem;
-  color: var(--text-title);
-  margin: 0.5rem 0 0.3rem;
-}
-
-.access-icon {
-  font-size: 1.5rem;
-}
-
-/* Acceso principal: Nuevo registro */
-.access-card-primary {
-  background-color: var(--action-primary-bg);
-  border-color: var(--action-primary-bg);
-  color: var(--action-primary-text);
-}
-
-.access-card-primary h3 {
-  color: var(--action-primary-text);
-}
-
-.access-card-primary:hover {
-  background-color: var(--action-primary-bg-hover);
-  border-color: var(--action-primary-bg-hover);
-}
-
-.feature-card {
-  border: 1px solid;
-  border-radius: 10px;
-  padding: 1.25rem;
-}
-
-.feature-card h3 {
-  font-size: 1.05rem;
-  margin-bottom: 0.3rem;
-}
-
-.feature-gym {
-  background-color: var(--gym-surface);
-  border-color: var(--gym-border);
-}
-
-.feature-gym h3 {
-  color: var(--gym-text);
-}
-
-.feature-basketball {
-  background-color: var(--bball-surface);
-  border-color: var(--bball-border);
-}
-
-.feature-basketball h3 {
-  color: var(--bball-text);
-}
+.type-gym { --type-color: var(--color-gym); }
+.type-bball { --type-color: var(--color-bball); }
 
 /* ==========================================
-   7. RESPONSIVE (PANTALLAS PEQUEÑAS)
+   8. RESPONSIVE Y MOVIMIENTO REDUCIDO
    ========================================== */
-@media (max-width: 600px) {
-  .app-header {
-    flex-direction: column;
-    gap: 0.8rem;
-    text-align: center;
-  }
-
-  .form-row {
-    flex-direction: column;
+@media (max-width: 37.5rem) {
+  .form-row,
+  .form-row-three {
+    grid-template-columns: minmax(0, 1fr);
     gap: 0;
   }
-
-  .form-row-three {
-    grid-template-columns: minmax(0, 1fr); /* Aquí cambia a 1 columna en celulares */
-    gap: 1rem;
-  }
-
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
 
-
-
-
-
-
+  .btn:active {
+    transform: none;
+  }
+}
