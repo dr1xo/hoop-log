@@ -1,0 +1,72 @@
+/* ==========================================
+   TOKENS DE DISEÑO
+   Las decisiones de la interfaz en un solo lugar: colores, fuentes,
+   tamaños y espacios. styles.css solo usa estas variables.
+   ========================================== */
+:root {
+  /* ---------- Superficies ---------- */
+  --color-paper: oklch(96.5% 0.009 80);       /* fondo crema */
+  --color-surface: oklch(98.8% 0.004 80);     /* tarjetas y campos */
+  --color-rule: oklch(89% 0.014 80);          /* líneas finas */
+  --color-rule-strong: oklch(80% 0.016 80);   /* bordes de campos */
+
+  /* ---------- Tinta ---------- */
+  --color-ink: oklch(21% 0.01 60);            /* títulos y números */
+  --color-ink-2: oklch(40% 0.012 60);         /* texto */
+  --color-ink-3: oklch(50% 0.012 60);         /* texto secundario */
+
+  /* ---------- Acento (naranja básquet) ---------- */
+  --color-accent: oklch(55% 0.17 42);
+  --color-accent-hover: oklch(49% 0.155 40);
+  --color-accent-ink: oklch(98.8% 0.004 80);  /* texto sobre el acento */
+
+  /* ---------- Tipos de actividad ---------- */
+  --color-gym: oklch(45% 0.06 250);
+  --color-bball: var(--color-accent);
+
+  /* ---------- Estados ---------- */
+  --color-danger: oklch(50% 0.18 27);
+  --color-danger-hover: oklch(44% 0.17 27);
+  --color-focus: var(--color-accent);
+
+  /* ---------- Fuentes ---------- */
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --display-stretch: 75%;                     /* Archivo condensada */
+
+  /* ---------- Tamaños de texto ---------- */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+  --text-display: clamp(2.5rem, 1.5rem + 4.5vw, 4.25rem);
+
+  --leading-tight: 0.95;
+  --leading-body: 1.5;
+  --tracking-label: 0.08em;
+
+  /* ---------- Espacios (escala de 4px) ---------- */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* ---------- Layout ---------- */
+  --container: 60rem;
+  --gutter: max(var(--space-md), calc((100% - var(--container)) / 2));
+
+  /* ---------- Bordes redondeados ---------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-pill: 999px;
+
+  /* ---------- Movimiento ---------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms;
+}
