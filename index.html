@@ -4,69 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HoopLog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,700..900&family=Inter:wght@400..600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="app-header">
-        <div class="marca">
-            <h1>HoopLog</h1>
-        </div>
-        <nav class ="app-nav">
+        <a class="marca" href="./index.html">HoopLog</a>
+        <nav class="app-nav" aria-label="Principal">
             <ul>
                 <li><a href="./index.html" aria-current="page">Inicio</a></li>
                 <li><a href="./pages/historial.html">Historial</a></li>
-                <li><a href="./pages/nuevoRegistro.html">Nuevo Registro</a></li>
+                <li><a class="btn btn-primary" href="./pages/nuevoRegistro.html">Nuevo registro</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="app-main">
-    <section class="welcome-section">
-      <h2>Bienvenido a HoopLog</h2>
-      <p>Registra tus entrenamientos de gimnasio y tus partidos de básquet, y sigue tu progreso en un solo lugar.</p>
-    </section>
+        <section class="home-hero">
+            <h1>¿Qué entrenaste hoy?</h1>
+            <p>Registra tus sesiones de gimnasio y tus partidos de básquet, y sigue tu progreso en un solo lugar.</p>
+            <div class="home-actions">
+                <a class="btn btn-primary btn-lg" href="./pages/nuevoRegistro.html">Nuevo registro</a>
+                <a class="btn btn-secondary btn-lg" href="./pages/historial.html">Ver historial</a>
+            </div>
+        </section>
 
-    <!-- ACCESOS RÁPIDOS -->
-    <section class="quick-access-section" aria-labelledby="quick-access-title">
-      <h2 id="quick-access-title">Accesos rápidos</h2>
+        <!-- RESUMEN: se completa cuando haya registros guardados -->
+        <section aria-labelledby="stats-title">
+            <h2 class="section-title" id="stats-title">Esta semana</h2>
 
-      <div class="access-grid">
-        <a class="access-card access-card-primary" href="./pages/nuevoRegistro.html">
-          <span class="access-icon" aria-hidden="true">➕</span>
-          <h3>Nuevo registro</h3>
-          <p>Carga una sesión de gimnasio o un partido de básquet.</p>
-        </a>
-
-        <a class="access-card" href="./pages/historial.html">
-          <span class="access-icon" aria-hidden="true">📋</span>
-          <h3>Historial</h3>
-          <p>Revisa tus actividades anteriores y tus estadísticas.</p>
-        </a>
-      </div>
-    </section>
-
-    <!-- QUÉ SE PUEDE REGISTRAR -->
-    <section class="features-section" aria-labelledby="features-title">
-      <h2 id="features-title">Qué puedes registrar</h2>
-
-      <div class="access-grid">
-        <article class="feature-card feature-gym">
-          <h3>🏋️ Gimnasio</h3>
-          <p>Ejercicios, series, repeticiones y peso de cada sesión.</p>
-        </article>
-
-        <article class="feature-card feature-basketball">
-          <h3>🏀 Básquet</h3>
-          <p>Puntos, rebotes y asistencias de cada partido.</p>
-        </article>
-      </div>
-    </section>
+            <ul class="stat-grid">
+                <li class="stat-tile">
+                    <span class="stat-label">Sesiones de gimnasio</span>
+                    <span class="stat-value is-empty">—</span>
+                </li>
+                <li class="stat-tile">
+                    <span class="stat-label">Partidos</span>
+                    <span class="stat-value is-empty">—</span>
+                </li>
+                <li class="stat-tile">
+                    <span class="stat-label">Puntos por partido</span>
+                    <span class="stat-value is-empty">—</span>
+                </li>
+                <li class="stat-tile">
+                    <span class="stat-label">Minutos entrenados</span>
+                    <span class="stat-value is-empty">—</span>
+                </li>
+            </ul>
+            <p class="stat-note">Los números aparecen cuando cargues tus primeros registros.</p>
+        </section>
     </main>
 
-  <footer class="app-footer">
-    <p>&copy; HoopLog &bull; Año 2026</p>
-  </footer>
-
-
+    <footer class="app-footer">
+        <p>&copy; 2026 HoopLog</p>
+    </footer>
 </body>
 </html>
